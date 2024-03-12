@@ -23,3 +23,5 @@ combinados = list(zip(paises, capitales))
 
 for paises, capitales in combinados:
     print(f'La capital de {paises} es {capitales}')
+
+print('\n---------------------\n')
