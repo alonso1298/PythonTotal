@@ -29,3 +29,31 @@ print('\n---------------------\n')
 lista4 = [n for n in range(0,21,2)]
 
 print(lista4)
+
+print('\n---------------------\n')
+
+#Podemos hacer operaciones dentro de estas listas 
+lista5 = [n / 2 for n in range(0,21,2)]
+
+print(lista5)
+
+print('\n---------------------\n')
+
+#Tambien podemos poner un bloque if para poner los numeros que queramos
+lis = [n for n in range(0,21,2) if n * 2 > 10]
+
+print(lis)
+
+print('\n---------------------\n')
+
+#Si queremos ingesar un else entonces este tiene que ir antes del for
+lista6 = [n if n * 2 > 10 else 'no' for n in range(0,21,2) ]
+
+print(lista6)
+
+print('\n---------------------\n')
+
+pies = [10,20,30,40,50]
+metros = [i / 3.281 for i in pies ]
+
+print(metros)
