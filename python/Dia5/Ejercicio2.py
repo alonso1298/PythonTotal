@@ -16,9 +16,26 @@ def ordernar_palabra(palabra):
     # Reconstruimos la lista sin duplicados
     lista_sin_repetidos = list(conjunto_temporal)
 
+    #Ordenamos la lista alfabeticamente con sort()
     lista_sin_repetidos.sort()
     
     return lista_sin_repetidos
 
 resultado = ordernar_palabra('entretenido')
 print(resultado)
+
+print('\n---------------------\n')
+
+# Otra forma de hacerlo es la siguiente:
+
+def letras_unicas(palabra):
+    
+    mi_set = set()
+
+    for letra in palabra:
+        mi_set.add(letra)
+
+    mi_lista = list(mi_set)
+    mi_lista.sort()
+
+    return mi_lista
