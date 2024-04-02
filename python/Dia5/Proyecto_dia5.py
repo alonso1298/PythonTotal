@@ -65,11 +65,13 @@ def chequear_letra(letra_elegida, palabra_oculta, vidas, coincidencias):
     fin = False
 
     #Nos fijamos si la letra legida se encuentra dentro de la palabra oculta
-    if letra_elegida in palabra_oculta:
+    if letra_elegida in palabra_oculta and letra_elegida not in letras_correctas:
         #Si esto ocurre la lista de palabras correctas va a recibir la letra elegida
         letras_correctas.append(letra_elegida)
         #Ademas si se acierta la letra se aumenta las coincidencias 
         coincidencias += 1
+    elif letra_elegida in palabra_oculta and letra_elegida in letras_correctas:
+        print('Ya has encontrado esa letra. Intenta con otra diferente')
     else: 
         #Si el usuario no acerto entonces la lista de letras incorrectas va a recibir la letra elegida
         letras_incorrectas.append(letra_elegida)
