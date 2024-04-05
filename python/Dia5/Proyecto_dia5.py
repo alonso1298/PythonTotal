@@ -22,8 +22,7 @@ def elegir_palabra(lista):
 
 
 def pedir_letra():
-    #Inicializamo
-    # s una variable con un str vacio 
+    #Inicializamos una variable con un str vacio 
     letra = ''
     #Esta variable evalua si la letra es valida
     es_valida = False
