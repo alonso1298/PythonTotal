@@ -65,3 +65,23 @@ piolin.volar(50)
 #Metodos de instancia: Podemos modificar el estado de la clase 
 piolin.alas = False
 print(piolin.alas)
+
+
+print('\n---------------------\n')
+
+class Personaje:
+
+    def __init__(self, canridad_flecha):
+        self.cantidad_flecha = canridad_flecha
+
+    def lanzar_flecha(self):
+        self.cantidad_flecha -= 1
+        print(f'Ahora tienes {self.cantidad_flecha} flechas')
+
+
+
+arquero = Personaje(10)
+
+arquero.lanzar_flecha()
+arquero.lanzar_flecha()
+    
