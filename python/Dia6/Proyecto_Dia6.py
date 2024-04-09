@@ -9,7 +9,6 @@ lista_recetas = []
 def listar_carpetas(ruta):
     # Convertir la ruta en un objeto Path
     ruta = Path(ruta)
-    
     # Verificar si la ruta es un directorio
     if ruta.is_dir():
         # Obtener los nombres de las carpetas en la ruta
