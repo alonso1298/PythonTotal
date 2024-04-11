@@ -71,7 +71,7 @@ def mostrar_opciones():
     return int(eleccion_menu)
 
 def volver_opciones():
-    print('Deseas hacer otro movimiento? \nPresiona "s"')
+    print('Deseas hacer otro movimiento?: \nPresiona "s"')
     opcion = input()
     if opcion == 's':
         return mostrar_opciones()
