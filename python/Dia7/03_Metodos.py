@@ -14,9 +14,8 @@ class Pajaro:
     def piar(self):
         print(f'pio, mi color es {self.color}')
 
-    '''
-    Si queremos crear un metodo que pida argumentos, se crea el metodo, agregamos self y seguido de los parametros que va a recibir 
-    '''
+
+    # Si queremos crear un metodo que pida argumentos, se crea el metodo, agregamos self y seguido de los parametros que va a recibir 
     def volar(self, metros):
         #Si invocamos a un atributo necesitamos relacionar a quien pertenece ese atributo 
         print(f'El pajaro ha volado una cantidad de {metros} metros')
