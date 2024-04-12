@@ -7,5 +7,6 @@ from Paquete_Alonso.Sub_Paquete import saludo
 suma_y_resta.suma(15,2)
 suma_y_resta.resta(80,60)
 
-#Ya podemos importar saludo del sub paquete 
-saludo()
+#Ya podemos importar saludo del sub paquete
+#Esto se hace poniendo el nombre del archivo seguido del nimbre de la funcion
+saludo.hola()
