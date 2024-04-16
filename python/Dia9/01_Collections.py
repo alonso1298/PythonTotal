@@ -4,7 +4,7 @@ disponibles en Python. Un contenedor almacena diferentes
 objetos y proporciona una nueva forma de acceder e iterar
 sobre los mismos.
 '''
-from collections import Counter, defaultdict, namedtuple
+from collections import Counter, defaultdict, namedtuple, deque
 
 #Supongamos que tenemos una lista de numeros que se van a repetir aleatoriamente
 numeros = [6,8,6,5,4,8,6,3,4,8,7,1,2]
@@ -68,3 +68,10 @@ print(ariel.peso)
 
 #Tambien se puede acceder a los elementos atravez de su numero de indice 
 print(ariel[0])
+
+print('\n---------------------\n')
+
+lista_ciudades = deque(['Londres', 'Berlin', 'Paris', 'Madrid', 'Roma', 'Moscu'])
+lista_ciudades.appendleft('CDMX')
+
+print(lista_ciudades)
