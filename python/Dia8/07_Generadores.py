@@ -44,7 +44,7 @@ print(generador_lista())
 
 l = generador_lista()
 
-#Nos va generando el numro mientras vamos imprimiendo 
+#Nos va generando el numero mientras vamos imprimiendo 
 print(next(l))
 print(next(l))
 print(next(l))
@@ -80,6 +80,33 @@ generador2 = contador()
 
 print(next(generador2))
 print(next(generador2))
-print(next(generador2))
-print(next(generador2))
-print(next(generador2))
+
+print('\n---------------------\n')
+
+def tabla_site():
+    x = 7
+    while True:
+        yield x
+        x += 7
+
+generador3 = tabla_site()
+
+print(next(generador3))
+
+print('\n---------------------\n') 
+
+def vidas():
+    x = 3
+    while x > 0:
+        yield f"Te queda{'n' if x != 1 else ''} {x} vida{'s' if x != 1 else ''}"
+        x -= 1
+    yield 'Game Over'
+
+perder_vida = vidas()
+
+print(next(perder_vida))
+print(next(perder_vida))
+print(next(perder_vida))
+print(next(perder_vida))
+
+    
