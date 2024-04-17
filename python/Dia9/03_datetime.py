@@ -47,3 +47,11 @@ print(vida)
 print('\n---------------------\n')
 
 #Podemos calcular cuanto tiepo estuvo una perosona despierta desde que se levanto hasta que se durmio
+despierta = datetime(2022, 10, 5, 7, 30)
+duerme = datetime(2022, 10, 5, 23, 45)
+
+vigilia = duerme - despierta
+print(vigilia)
+
+#Si le aplicacmos la propiedad seconds nos dara el total en segundos 
+print(vigilia.seconds)
