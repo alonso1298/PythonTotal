@@ -166,9 +166,9 @@ de lo contrario: "El código postal ingresado no es correcto".
 
 def verificar_cp(cp):
     
-    patron = r'\w{2}\d{4}'
+    patron8 = r'\w{2}\d{4}'
     
-    if re.match(patron, cp):
+    if re.match(patron8, cp):
         print("Ok")
         
     else:
