@@ -71,9 +71,9 @@ Que enpiece con una letra y que en total tenga 8 caracteres
 
 clave = input('Clave: ')
 
-patron = r"\D{1}\w{7}"
+patron4 = r"\D{1}\w{7}"
 
-chequear = re.search(patron, clave)
+chequear = re.search(patron4, clave)
 
 print(chequear)
 
@@ -101,6 +101,75 @@ print(buscar4)
 
 print('\n---------------------\n')
 
+#Con la serie de caracteres [^] va a encontrar todos los que excluyan un espacio vacio 
 buscar5 = re.findall(r'[^\s]', info)
 print(buscar5)
 
+#Si le agregamos el signo + lo va a buscar todas las veces que existan y los va a construir en una lista de palabras
+buscar5 = re.findall(r'[^\s]+', info)
+print(buscar5)
+
+
+print('\n---------------------\n')
+
+'''
+Crea una función llamada verificar_email para comprobar si una dirección de email es correcta, 
+que verifique si el email dado como argumento contiene "@" 
+(entre el nombre de usuario y el dominio) y finaliza en ".com" 
+(aunque aceptando también casos que cuentan con un dominio adicional, 
+tal como ".com.br" para el caso de un usuario de Brasil).
+
+Si se encuentra el patrón, la función debe finalizar mostrando en pantalla el mensaje "Ok", 
+pero si detecta que la frase no contiene los elementos indicados, 
+debe informarle al usuario "La dirección de email es incorrecta" imprimiendo el mensaje.
+'''
+
+def verificar_email(email):
+    patron6 = r'^[a-z A-Z 0-9 ]+@[a-z A-Z 0-9 .-]+\.[a-zA-Z]{2,}$'
+    
+    if re.match(patron6, email):
+        print('ok')
+    else:
+        print('La dirección de email es incorrecta')
+        
+verificar_email("usuario@host.com")
+
+print('\n---------------------\n')
+
+'''
+Crea una función llamada verificar_saludo para verificar si una frase entregada como argumento inicia con la palabra "Hola". 
+Si se encuentra el patrón, la función debe finalizar mostrando el mensaje "Ok", 
+pero si detecta que la frase no contiene "Hola", 
+debe informarle al usuario "No has saludado" imprimiendo el mensaje en pantalla.
+'''
+
+def verificar_saludo(frase):
+    patron7 = r'^Hola\s\w+'
+    
+    if re.match(patron7, frase):
+        print('ok')
+    else:
+        print('No has saludado')
+
+verificar_saludo('Hola como estas')
+
+
+print('\n---------------------\n')
+
+'''
+El código postal de una región determinada se forma a partir de dos caracteres alfanuméricos y cuatro numéricos 
+a continuación (ejemplo: XX1234). Crea una función, 
+llamada verificar_cp para comprobar si el código postal pasado como argumento sigue este patrón. 
+Si el patrón es correcto, mostrar al usuario el mensaje "Ok", 
+de lo contrario: "El código postal ingresado no es correcto".
+'''
+
+def verificar_cp(cp):
+    
+    patron = r'\w{2}\d{4}'
+    
+    if re.match(patron, cp):
+        print("Ok")
+        
+    else:
+        print("El código postal ingresado no es correcto")
