@@ -1,4 +1,5 @@
 import pygame
+import random
 
 #inicializamos a Pygame
 pygame.init()
@@ -19,12 +20,19 @@ img_jugador = pygame.image.load('C:\\Users\\yo_al\\Documentos\\PythonTotal\\pyth
 jugador_x = 368
 jugador_y = 536
 jugadorx_cambio = 0
-jugadory_cambio = 0
+
+img_enemigo = pygame.image.load('C:\\Users\\yo_al\\Documentos\\PythonTotal\\python\\Dia10\\ovni.png')
+enemigo_x = random.randint(0, 736)
+enemigo_y = random.randint(50, 200)
+enemigo_x_cambio = 0
 
 
 #Funcion Jugador 
 def jugador(x, y):
     pantalla.blit(img_jugador, (x, y))
+    
+def enemigo(x, y):
+    pantalla.blit(img_enemigo, (x, y))
 
 '''
 Tenemos un loop que se ejecute siempre que sea True y va a revisar cada uno de los eventos que existen dentro de la 
@@ -67,6 +75,7 @@ while se_ejecuta:
         
         
     jugador(jugador_x, jugador_y)
+    enemigo(enemigo_x, enemigo_y)
     
     #Actualizar
     pygame.display.update()
