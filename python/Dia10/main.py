@@ -1,5 +1,6 @@
 import pygame
 import random
+import math
 
 #inicializamos a Pygame
 pygame.init()
@@ -34,8 +35,11 @@ img_bala = pygame.image.load('C:\\Users\\yo_al\\Documentos\\PythonTotal\\python\
 bala_x = 0
 bala_y = 500
 bala_x_cambio = 0
-bala_y_cambio = 1
+bala_y_cambio = 0.8
 bala_visible = False
+
+#Puntaje
+puntaje = 0
 
 #Funcion Jugador 
 def jugador(x, y):
@@ -51,6 +55,15 @@ def disparar_bala(x, y):
     bala_visible = True
     pantalla.blit(img_bala, (x, y - 40))
 
+# Detectar_colisiones
+def hay_colision(x_1, y_1, x_2, y_2):
+    distancia = math.sqrt((x_2 - x_1)**2 + (y_2 - y_1)**2)
+    if distancia < 27:
+        return True
+    else:
+        return False
+    
+    
 '''
 Tenemos un loop que se ejecute siempre que sea True y va a revisar cada uno de los eventos que existen dentro de la 
 nomenclatura de pygame y si ese evento de tipo QUIT que es cuando se hace click en la x de la ventana
@@ -113,8 +126,17 @@ while se_ejecuta:
         disparar_bala(bala_x, bala_y)
         bala_y -= bala_y_cambio
         
+    # Colision
+    colision = hay_colision(enemigo_x, enemigo_y, bala_x, bala_y)
+    if colision:
+        bala_y = 500
+        bala_visible = False
+        puntaje += 1
+        print(puntaje)
+        enemigo_x = random.randint(0, 736)
+        enemigo_y = random.randint(50, 200)
         
-        
+         
     jugador(jugador_x, jugador_y)
     enemigo(enemigo_x, enemigo_y)
     
