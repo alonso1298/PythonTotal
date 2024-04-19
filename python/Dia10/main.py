@@ -18,6 +18,8 @@ pygame.display.set_icon(icono)
 img_jugador = pygame.image.load('C:\\Users\\yo_al\\Documentos\\PythonTotal\\python\\Dia10\\nave-espacial.png')
 img_jugador_x = 368
 img_jugador_y = 536
+jugadorx_cambio = 0
+jugadory_cambio = 0
 
 def jugador(x, y):
     pantalla.blit(img_jugador, (x, y))
@@ -32,12 +34,21 @@ while se_ejecuta:
     #RGB pantalla
     pantalla.fill((205, 144, 228))
     
-    img_jugador_x += 0.1
-    
     for evento in pygame.event.get():
         if evento.type == pygame.QUIT:
             se_ejecuta = False
+            
+        if evento.type == pygame.KEYDOWN:
+            if evento.key == pygame.K_LEFT:
+                jugadorx_cambio = -0.3
+            if evento.key == pygame.K_RIGHT:
+                jugadorx_cambio = 0.3
+                
+        if evento.type == pygame.KEYUP:
+            if evento.key == pygame.K_LEFT or evento.key == pygame.K_RIGHT:
+                jugadorx_cambio = 0
     
+    img_jugador_x += jugadorx_cambio
     jugador(img_jugador_x, img_jugador_y)
     
     pygame.display.update()
