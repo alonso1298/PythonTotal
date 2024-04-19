@@ -14,6 +14,7 @@ se_ejecuta = True
 pygame.display.set_caption('Invasion Espacial')
 icono = pygame.image.load('C:\\Users\\yo_al\\Documentos\\PythonTotal\\python\\Dia10\\nasa.png')
 pygame.display.set_icon(icono)
+fondo = pygame.image.load('C:\\Users\\yo_al\\Documentos\\PythonTotal\\python\\Dia10\\Fondo.jpg')
 
 # Varibles del Jugador
 img_jugador = pygame.image.load('C:\\Users\\yo_al\\Documentos\\PythonTotal\\python\\Dia10\\nave-espacial.png')
@@ -43,8 +44,8 @@ la variable pasara a ser falsa y se terminara el programa
 '''
 while se_ejecuta:
     
-    #RGB pantalla
-    pantalla.fill((205, 144, 228))
+    #imagen de fondo
+    pantalla.blit(fondo, (0,0))
     
     #Iterar eventos
     for evento in pygame.event.get():
