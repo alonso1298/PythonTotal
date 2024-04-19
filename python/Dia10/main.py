@@ -29,13 +29,27 @@ enemigo_y = random.randint(50, 200)
 enemigo_x_cambio = 0.3
 enemigo_y_cambio = 50
 
+# Variables de la bala
+img_bala = pygame.image.load('C:\\Users\\yo_al\\Documentos\\PythonTotal\\python\\Dia10\\hotdog.png')
+bala_x = 0
+bala_y = 500
+bala_x_cambio = 0
+bala_y_cambio = 1
+bala_visible = False
 
 #Funcion Jugador 
 def jugador(x, y):
     pantalla.blit(img_jugador, (x, y))
-    
+
+#Funcion Enemigo    
 def enemigo(x, y):
     pantalla.blit(img_enemigo, (x, y))
+
+#Funcion disparar bala    
+def disparar_bala(x, y):
+    global bala_visible
+    bala_visible = True
+    pantalla.blit(img_bala, (x + 16, y + 10))
 
 '''
 Tenemos un loop que se ejecute siempre que sea True y va a revisar cada uno de los eventos que existen dentro de la 
@@ -54,12 +68,14 @@ while se_ejecuta:
         if evento.type == pygame.QUIT:
             se_ejecuta = False
         
-        #Evento presionar flechas    
+        #Evento presionar teclas    
         if evento.type == pygame.KEYDOWN:
             if evento.key == pygame.K_LEFT:
                 jugadorx_cambio = -0.3
             if evento.key == pygame.K_RIGHT:
                 jugadorx_cambio = 0.3
+            if evento.key == pygame.K_SPACE:
+                disparar_bala(jugador_x, bala_y)
         
         #Evento Soltar flechas        
         if evento.type == pygame.KEYUP:
@@ -85,6 +101,11 @@ while se_ejecuta:
     elif enemigo_x >= 736:
         enemigo_x_cambio = -0.3
         enemigo_y += enemigo_y_cambio
+        
+    # Movimiento bala
+    if bala_visible:
+        disparar_bala(jugador_x, bala_y)
+        bala_y -= bala_y_cambio
         
         
         
