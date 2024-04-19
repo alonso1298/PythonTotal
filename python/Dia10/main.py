@@ -49,7 +49,7 @@ def enemigo(x, y):
 def disparar_bala(x, y):
     global bala_visible
     bala_visible = True
-    pantalla.blit(img_bala, (x + 16, y + 10))
+    pantalla.blit(img_bala, (x, y - 40))
 
 '''
 Tenemos un loop que se ejecute siempre que sea True y va a revisar cada uno de los eventos que existen dentro de la 
@@ -75,7 +75,9 @@ while se_ejecuta:
             if evento.key == pygame.K_RIGHT:
                 jugadorx_cambio = 0.3
             if evento.key == pygame.K_SPACE:
-                disparar_bala(jugador_x, bala_y)
+                if not bala_visible:
+                    bala_x = jugador_x
+                    disparar_bala(bala_x, bala_y)
         
         #Evento Soltar flechas        
         if evento.type == pygame.KEYUP:
@@ -103,8 +105,12 @@ while se_ejecuta:
         enemigo_y += enemigo_y_cambio
         
     # Movimiento bala
+    if bala_y <= -64:
+        bala_y = 500
+        bala_visible = False
+        
     if bala_visible:
-        disparar_bala(jugador_x, bala_y)
+        disparar_bala(bala_x, bala_y)
         bala_y -= bala_y_cambio
         
         
