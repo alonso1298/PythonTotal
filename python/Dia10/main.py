@@ -1,6 +1,7 @@
 import pygame
 import random
 import math
+from pygame import mixer
 
 #inicializamos a Pygame
 pygame.init()
@@ -16,6 +17,11 @@ pygame.display.set_caption('Invasion Espacial')
 icono = pygame.image.load('C:\\Users\\yo_al\\Documentos\\PythonTotal\\python\\Dia10\\nasa.png')
 pygame.display.set_icon(icono)
 fondo = pygame.image.load('C:\\Users\\yo_al\\Documentos\\PythonTotal\\python\\Dia10\\Fondo.jpg')
+
+# Agregar musica
+mixer.music.load('C:\\Users\\yo_al\\Documentos\\PythonTotal\\python\\Dia10\\stranger-things.mp3')
+mixer.music.set_volume(0.6)
+mixer.music.play(-1)
 
 # Varibles del Jugador
 img_jugador = pygame.image.load('C:\\Users\\yo_al\\Documentos\\PythonTotal\\python\\Dia10\\nave-espacial.png')
@@ -104,6 +110,8 @@ while se_ejecuta:
             if evento.key == pygame.K_RIGHT:
                 jugadorx_cambio = 0.3
             if evento.key == pygame.K_SPACE:
+                sonido_bala = mixer.Sound('C:\\Users\\yo_al\\Documentos\\PythonTotal\\python\\Dia10\\disparo.mp3')
+                sonido_bala.play()
                 if not bala_visible:
                     bala_x = jugador_x
                     disparar_bala(bala_x, bala_y)
@@ -137,6 +145,8 @@ while se_ejecuta:
             # Colision
         colision = hay_colision(enemigo_x[e], enemigo_y[e], bala_x, bala_y)
         if colision:
+            sonido_colision = mixer.Sound('C:\\Users\\yo_al\\Documentos\\PythonTotal\\python\\Dia10\\roblox-death.mp3')
+            sonido_colision.play()
             bala_y = 500
             bala_visible = False
             puntaje += 1
