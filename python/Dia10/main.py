@@ -63,6 +63,13 @@ fuente = pygame.font.Font('C:\\Users\\yo_al\\Documentos\\PythonTotal\\python\\Di
 texto_x = 10
 texto_y = 10
 
+# Texto final de juego 
+fuente_final = pygame.font.Font('C:\\Users\\yo_al\\Documentos\\PythonTotal\\python\\Dia10\\techno_hideo.ttf', 40)
+
+def texto_final():
+    mi_fuente_final = fuente_final.render('GAME OVER', True, (255,255,255))
+    pantalla.blit(mi_fuente_final, (270, 200))
+
 #Funcion Jugador 
 def jugador(x, y):
     pantalla.blit(img_jugador, (x, y))
@@ -132,6 +139,14 @@ while se_ejecuta:
         
     #Modificar ubicacion del enemigo
     for e in range(cantidad_enemigos):
+        
+        # Fin del juego 
+        if enemigo_y[e] > 500:
+            for  k in range(cantidad_enemigos):
+                enemigo_y[k] = 1000
+            texto_final()
+            break
+        
         enemigo_x[e] += enemigo_x_cambio[e]
     
         #Mantener dentro de bordes al enemigo 
@@ -142,7 +157,7 @@ while se_ejecuta:
             enemigo_x_cambio[e] = -0.3
             enemigo_y[e] += enemigo_y_cambio[e]
             
-            # Colision
+        # Colision
         colision = hay_colision(enemigo_x[e], enemigo_y[e], bala_x, bala_y)
         if colision:
             sonido_colision = mixer.Sound('C:\\Users\\yo_al\\Documentos\\PythonTotal\\python\\Dia10\\roblox-death.mp3')
