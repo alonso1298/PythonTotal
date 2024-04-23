@@ -46,8 +46,16 @@ bala_x_cambio = 0
 bala_y_cambio = 0.8
 bala_visible = False
 
+#Mostrar puntaje
+def mostrar_puntaje(x, y):
+    texto = fuente.render(f'Puntaje: {puntaje}', True, (255, 255, 255))
+    pantalla.blit(texto, (x, y))
+
 #Puntaje
 puntaje = 0
+fuente = pygame.font.Font('C:\\Users\\yo_al\\Documentos\\PythonTotal\\python\\Dia10\\techno_hideo.ttf', 32)
+texto_x = 10
+texto_y = 10
 
 #Funcion Jugador 
 def jugador(x, y):
@@ -132,7 +140,6 @@ while se_ejecuta:
             bala_y = 500
             bala_visible = False
             puntaje += 1
-            print(puntaje)
             enemigo_x[e] = random.randint(0, 736)
             enemigo_y[e] = random.randint(50, 200)
         
@@ -150,6 +157,8 @@ while se_ejecuta:
         
          
     jugador(jugador_x, jugador_y)
+    
+    mostrar_puntaje(texto_x, texto_y)
     
     #Actualizar
     pygame.display.update()
