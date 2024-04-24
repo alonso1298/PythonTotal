@@ -2,6 +2,10 @@ from tkinter import *
 
 operador = ''
 
+precios_comida = [1.32, 1.65, 2.31, 3.22, 1.22, 1.99, 2.05, 2.65]
+precios_bebida = [0.25, 0.99, 1.21, 1.54, 1.08, 1.10, 2.00, 1.58]
+precios_postres = [1.54, 1.68, 1.32, 1.97, 2.55, 2.14, 1.94, 1.74]
+
 def click_boton(num):
     global operador
     operador = operador + num
@@ -25,7 +29,8 @@ def revisar_check():
     for c in cuadros_comida:
         if variables_comida[x].get() == 1:
             cuadros_comida[x].config(state=NORMAL)
-            cuadros_comida[x].delete(0, END)
+            if cuadros_comida[x].get() == '0':
+                cuadros_comida[x].delete(0, END)
             cuadros_comida[x].focus()
         else:
             cuadros_comida[x].config(state=DISABLED)
@@ -37,7 +42,8 @@ def revisar_check():
     for c in cuadros_bebida:
         if variables_bebida[x].get() == 1:
             cuadros_bebida[x].config(state=NORMAL)
-            cuadros_bebida[x].delete(0, END)
+            if cuadros_bebida[x].get() == '0':
+                cuadros_bebida[x].delete(0, END)
             cuadros_bebida[x].focus()
         else:
             cuadros_bebida[x].config(state=DISABLED)
@@ -49,13 +55,45 @@ def revisar_check():
     for c in cuadros_postre:
         if variables_postre[x].get() == 1:
             cuadros_postre[x].config(state=NORMAL)
-            cuadros_postre[x].delete(0, END)
+            if cuadros_postre[x].get() == '0':
+                cuadros_postre[x].delete(0, END)
             cuadros_postre[x].focus()
         else:
             cuadros_postre[x].config(state=DISABLED)
             texto_postre[x].set('0')
         x += 1
+        
+        
+def total():
+    sub_total_comida = 0
+    p = 0
+    for cantidad in texto_comida:
+        sub_total_comida = sub_total_comida + (float(cantidad.get()) * precios_comida[p])
+        p += 1
+    
+    sub_total_bebida = 0
+    p = 0
+    for cantidad in texto_bebida:
+        sub_total_bebida = sub_total_bebida + (float(cantidad.get()) * precios_bebida[p])
+        p += 1
+    
+    sub_total_postre = 0
+    p = 0
+    for cantidad in texto_postre:
+        sub_total_postre = sub_total_postre + (float(cantidad.get()) * precios_postres[p])
+        p += 1
 
+    sub_total = sub_total_comida + sub_total_bebida + sub_total_postre
+    impuestos = sub_total * 0.16
+    total = sub_total + impuestos
+    
+    var_costo_comida.set(f'$ {round(sub_total_comida, 2)}')
+    var_costo_bebida.set(f'$ {round(sub_total_bebida, 2)}')
+    var_costo_postre.set(f'$ {round(sub_total_postre, 2)}')
+    var_subtotal.set(f'$ {round(sub_total, 2)}')
+    var_impuesto.set(f'$ {round(impuestos, 2)}')
+    var_total.set(f'$ {round(total, 2)}')
+        
 #Iniciar tkinter
 aplicacion = Tk()
 
@@ -350,6 +388,8 @@ texto_total.grid(row=2, column=3, padx=41)
 
 # Botones
 botones = ['total', 'recibo', 'guardar', 'resetear']
+botonoes_creados = []
+
 columnas = 0
 for boton in botones:
     boton = Button(panel_botones,
@@ -360,9 +400,13 @@ for boton in botones:
                    bd=1,
                    width=9)
     
+    botonoes_creados.append(boton)
+    
     boton.grid(row=0,
                column=columnas)
     columnas += 1
+
+botonoes_creados[0].config(command=total)
     
 # Area recibo 
 texto_recibo = Text(panel_recibo,
