@@ -310,6 +310,39 @@ texto_recibo = Text(panel_recibo,
 texto_recibo.grid(row=0,
                   column=0)
 
+# Calculadora
+visor_calculadora = Entry(panel_calculadora, font=('Dosis', 16, 'bold'),
+                          width=28,
+                          bd=1)
+visor_calculadora.grid(row=0,
+                       column=0,
+                       columnspan=4)
+
+botones_calculadora = ['7', '8', '9', '+', '4', '5', '6', '-', 
+                       '1', '2', '3', 'x', 'R', 'B', '0', '/']
+
+fila = 1
+columna = 0
+for boton in botones_calculadora:
+    boton = Button(panel_calculadora,
+                   text=boton.title(),
+                   font=('Dosis', 16, 'bold'),
+                   fg='white',
+                   bg='azure4',
+                   bd=1,
+                   width=6)
+    boton.grid(row=fila,
+               column=columna)
+    
+    if columna == 3:
+        fila +=1
+    
+    columna += 1
+    
+    if columna == 4:
+        columna = 0 
+    
+
 # Evitar que la pantalla se cierre
 aplicacion.mainloop()
 
