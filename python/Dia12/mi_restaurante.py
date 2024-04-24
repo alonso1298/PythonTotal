@@ -64,6 +64,44 @@ panel_recibo.pack()
 panel_botones = Frame(panel_derecha, bd=1, relief=FLAT, background='PaleGoldenrod')
 panel_botones.pack()
 
+# Lista de productos 
+lista_comidas = ['pollo', 'cordero', 'pescado', 'salmon', 'tacos', 'pizza', 'suadero', 'pastor']
+lista_bebidas = ['agua', 'refresco', 'te', 'cafe', 'jugo', 'vino', 'cerveza', 'tequila']
+lista_postres = ['flan', 'fruta', 'helado', 'mouse', 'pastel', 'pay', 'gelatina', 'chocolate']
+
+# Generar items comida
+variables_comida = []
+contador = 0
+for comida in lista_comidas:
+    variables_comida.append('')
+    variables_comida[contador] = IntVar()
+    comida = Checkbutton(panel_comidas, text=comida.title(), font=('Dosis', 19, 'bold'),
+                         onvalue=1, offvalue=0, variable=variables_comida[contador])
+    comida.grid(row=contador, column=0, sticky=W)
+    contador += 1
+    
+# Generar items bebidas
+variables_bebida = []
+contador = 0
+for bebida in lista_bebidas:
+    variables_bebida.append('')
+    variables_bebida[contador] = IntVar()
+    bebida = Checkbutton(panel_bebidas, text=bebida.title(), font=('Dosis', 19, 'bold'),
+                         onvalue=1, offvalue=0, variable=variables_bebida[contador])
+    bebida.grid(row=contador, column=0, sticky=W)
+    contador += 1
+    
+# Generar items postres
+variables_postre = []
+contador = 0
+for postre in lista_postres:
+    variables_postre.append('')
+    variables_postre[contador] = IntVar()
+    postre = Checkbutton(panel_postres, text=postre.title(), font=('Dosis', 19, 'bold'),
+                         onvalue=1, offvalue=0, variable=variables_postre[contador])
+    postre.grid(row=contador, column=0, sticky=W)
+    contador += 1
+
 
 # Evitar que la pantalla se cierre
 aplicacion.mainloop()
